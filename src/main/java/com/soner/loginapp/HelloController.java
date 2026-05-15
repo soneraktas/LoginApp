@@ -7,7 +7,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
+import com.soner.loginapp.DortBasamakliSayiBulucu;
+
 public class HelloController {
+
+    DortBasamakliSayiBulucu dortBasamakliSayiBulucu = new DortBasamakliSayiBulucu();
 
     @FXML
     private Label sonuc;
@@ -19,8 +23,16 @@ public class HelloController {
     private PasswordField passwd;
 
     @FXML
+    public void initialize() {
+        System.out.println("initialize metodu çalıştı ...");
+        dortBasamakliSayiBulucu.sayiUret();
+        System.out.println("olusan 4 basamaklı rakamları farklı sayı...:"+dortBasamakliSayiBulucu.tahminEdilecekSayi);
+    }//end initialize
+
+    @FXML
     void girisYap(ActionEvent event) {
-        System.out.println("girisYap butonuna basıldı");
+        dortBasamakliSayiBulucu.sayiUret();
+        System.out.println("olusan 4 basamaklı rakamları farklı sayı...:"+dortBasamakliSayiBulucu.tahminEdilecekSayi);
 
         if (kullaniciAdi.getText().equals("soner") && passwd.getText().equals("123") ){
             sonuc.setTextFill(Color.GREEN);
@@ -28,7 +40,7 @@ public class HelloController {
         }else {
             sonuc.setText("Kullanıcı ismi veya şifreniz yanlış");
             sonuc.setTextFill(Color.RED);
-        }
+        }//end else
 
     }//end girisYap
 
